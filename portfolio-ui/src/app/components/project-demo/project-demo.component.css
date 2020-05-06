@@ -1,0 +1,16 @@
+.info-icon {
+  margin-left: 2%;
+}
+
+.tech-details-overlay {
+  position: fixed;
+  z-index: 3;
+  background-color: black;
+  color: white;
+  opacity: 74%;
+  width: 27%;
+  top: 25%;
+  right: 2%;
+  padding: 1%;
+  border-radius: 5%;
+}

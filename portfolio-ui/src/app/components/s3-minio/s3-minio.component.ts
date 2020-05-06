@@ -3,6 +3,8 @@ import {UserService} from '../../services/user.service';
 import {FileService} from '../../services/file.service';
 import {MatIconRegistry} from '@angular/material/icon';
 import {DomSanitizer} from '@angular/platform-browser';
+import {ProjectService} from '../../services/project.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-s3-minio',
@@ -12,15 +14,13 @@ import {DomSanitizer} from '@angular/platform-browser';
 export class S3MinioComponent implements OnInit {
   files: string[] = [];
   error: string = null;
+  itsHr = false;
 
   constructor(private userService: UserService,
               private fileService: FileService,
-              private matIconRegistry: MatIconRegistry,
-              private domSanitizer: DomSanitizer) {
-    this.matIconRegistry.addSvgIcon(
-      'close_custom',
-      this.domSanitizer.bypassSecurityTrustResourceUrl('../../assets/close.svg')
-    );
+              private projectService: ProjectService,
+              private snackBar: MatSnackBar) {
+    this.itsHr = this.userService.userValue.role === 'hr';
   }
 
   ngOnInit(): void {
@@ -38,6 +38,12 @@ export class S3MinioComponent implements OnInit {
     },
     error1 => {
       this.error = error1.message;
+    });
+  }
+
+  openSnackBar(message, action) {
+    this.snackBar.open(message, action, {
+      duration: 3 * 1000,
     });
   }
 

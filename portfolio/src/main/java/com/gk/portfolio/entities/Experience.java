@@ -10,6 +10,8 @@ public class Experience extends IdentifiedEntity<Long> {
     private String workRole;
     private String description;
     private boolean present;
+    private String avatarLink;
+
 
     public Integer getFromYear() {
         return fromYear;
@@ -57,5 +59,13 @@ public class Experience extends IdentifiedEntity<Long> {
 
     public void setWorkRole(String workRole) {
         this.workRole = workRole;
+    }
+
+    public String getAvatarLink() {
+        return avatarLink;
+    }
+
+    public void setAvatarLink(String avatarLink) {
+        this.avatarLink = avatarLink;
     }
 }

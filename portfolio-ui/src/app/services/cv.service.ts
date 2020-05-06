@@ -31,6 +31,15 @@ export class CvService {
     return this.httpClient.post<Skill>(`${environment.apiUrl}/api/v1/gk/cv/skill`, skill, httpOptions);
   }
 
+  removeSkill(id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Basic ' + this.userService.userValue.btoa
+      })
+    };
+    return this.httpClient.delete(`${environment.apiUrl}/api/v1/gk/cv/skill/${id}`, httpOptions);
+  }
+
   addExperience(experience: Experience): Observable<Experience> {
     const httpOptions = {
       headers: new HttpHeaders({
@@ -38,6 +47,24 @@ export class CvService {
       })
     };
     return this.httpClient.post<Experience>(`${environment.apiUrl}/api/v1/gk/cv/experience`, experience, httpOptions);
+  }
+
+  removeExperience(id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Basic ' + this.userService.userValue.btoa
+      })
+    };
+    return this.httpClient.delete(`${environment.apiUrl}/api/v1/gk/cv/experience/${id}`, httpOptions);
+  }
+
+  removeEducation(id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Basic ' + this.userService.userValue.btoa
+      })
+    };
+    return this.httpClient.delete(`${environment.apiUrl}/api/v1/gk/cv/education/${id}`, httpOptions);
   }
 
   addEducation(education: Education): Observable<Education> {
@@ -56,5 +83,14 @@ export class CvService {
       })
     };
     return this.httpClient.post<Language>(`${environment.apiUrl}/api/v1/gk/cv/language`, language, httpOptions);
+  }
+
+  removeLanguage(id) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: 'Basic ' + this.userService.userValue.btoa
+      })
+    };
+    return this.httpClient.delete(`${environment.apiUrl}/api/v1/gk/cv/language/${id}`, httpOptions);
   }
 }

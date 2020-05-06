@@ -32,6 +32,10 @@ import {DetailsUploadComponent} from './components/s3-minio/upload/details-uploa
 import {FormUploadComponent} from './components/s3-minio/upload/form-upload/form-upload.component';
 import {ListUploadComponent} from './components/s3-minio/upload/list-upload/list-upload.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { DoneProjectsComponent } from './components/done-projects/done-projects.component';
+import {ProjectService} from './services/project.service';
+import {EditorModule} from 'primeng/editor';
+import { LinksComponent } from './components/links/links.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +49,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     S3MinioComponent,
     DetailsUploadComponent,
     FormUploadComponent,
-    ListUploadComponent
+    ListUploadComponent,
+    DoneProjectsComponent,
+    LinksComponent
   ],
   imports: [
     MatCardModule,
@@ -60,6 +66,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatFileUploadModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+
+    EditorModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
@@ -71,7 +79,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     CvService,
     CalculatorService,
     CurrencyService,
-    FileService
+    FileService,
+    ProjectService
   ],
   bootstrap: [AppComponent]
 })

@@ -16,9 +16,16 @@ export class AppComponent {
     private userService: UserService
   ) {
     this.userService.user.subscribe(x => this.user = x);
+    this.router.navigate(['/home']);
+
   }
 
   logout() {
     this.userService.logout();
   }
+
+  home() {
+    this.router.navigate(['/home']);
+  }
+
 }

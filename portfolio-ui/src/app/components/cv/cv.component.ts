@@ -7,6 +7,7 @@ import {Education} from '../../models/education.model';
 import {Language} from '../../models/language.model';
 import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-cv',
@@ -31,7 +32,8 @@ export class CvComponent implements OnInit {
 
   constructor(private cvService: CvService,
               private userService: UserService,
-              private router: Router) {
+              private router: Router,
+              private snackBar: MatSnackBar) {
     if (!this.userService.userValue) {
       this.router.navigate(['/login']);
     }
@@ -41,6 +43,13 @@ export class CvComponent implements OnInit {
   ngOnInit(): void {
     this.cvService.getCv().subscribe(value => {
       this.cv = value;
+      this.cv.experiences = this.cv.experiences.reverse();
+    });
+  }
+
+  openSnackBar(message, action) {
+    this.snackBar.open(message, action, {
+      duration: 3 * 1000,
     });
   }
 
@@ -56,8 +65,17 @@ export class CvComponent implements OnInit {
     this.newSkill = new Skill();
   }
 
-  removeSkill() {
-
+  removeSkill(skill) {
+      this.cvService.removeSkill(skill.id).subscribe(value => {
+        const index = this.cv.skills.indexOf(skill, 0);
+        if (index > -1) {
+          this.cv.skills.splice(index, 1);
+        }
+      },
+        error => {
+          this.openSnackBar(`Error in during of removing skill ${skill.name}`, '');
+        }
+        );
   }
 
   addEducation() {
@@ -72,8 +90,17 @@ export class CvComponent implements OnInit {
     this.newEducation = new Education();
   }
 
-  removeEducation() {
-
+  removeEducation(education) {
+    this.cvService.removeEducation(education.id).subscribe(value => {
+        const index = this.cv.educations.indexOf(education, 0);
+        if (index > -1) {
+          this.cv.educations.splice(index, 1);
+        }
+      },
+      error => {
+        this.openSnackBar(`Error in during of removing education ${education.name}`, '');
+      }
+    );
   }
 
   addLanguage() {
@@ -88,8 +115,17 @@ export class CvComponent implements OnInit {
     this.newLanguage = new Language();
   }
 
-  removeLanguage() {
-
+  removeLanguage(language) {
+    this.cvService.removeLanguage(language.id).subscribe(value => {
+        const index = this.cv.languages.indexOf(language, 0);
+        if (index > -1) {
+          this.cv.languages.splice(index, 1);
+        }
+      },
+      error => {
+        this.openSnackBar(`Error in during of removing language ${language.name}`, '');
+      }
+    );
   }
 
   addExperience() {
@@ -104,8 +140,17 @@ export class CvComponent implements OnInit {
     this.newExperience = new Experience();
   }
 
-  removeExperience() {
-
+  removeExperience(experience) {
+    this.cvService.removeExperience(experience.id).subscribe(value => {
+        const index = this.cv.experiences.indexOf(experience, 0);
+        if (index > -1) {
+          this.cv.experiences.splice(index, 1);
+        }
+      },
+      error => {
+        this.openSnackBar(`Error in during of removing experience ${experience.company}`, '');
+      }
+    );
   }
 
 }

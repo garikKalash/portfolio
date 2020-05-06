@@ -42,7 +42,7 @@
           <mat-list-item *ngFor="let skill of cv.skills| slice:divi*4:divi*4 + 4; index as i">
             <div mat-line><strong>{{skill.name}}</strong></div>
             <div mat-line>{{skill.experienceInYear}} years</div>
-            <button mat-icon-button *ngIf="itsMe">
+            <button mat-icon-button *ngIf="itsMe" (click)="removeSkill(skill)">
               <mat-icon>remove_circle</mat-icon>
             </button>
           </mat-list-item>
@@ -85,9 +85,9 @@
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{experience.company}}</mat-card-title>
-            <mat-card-subtitle>{{experience.fromYear}} - {{experience.toYear}}</mat-card-subtitle>
+            <mat-card-subtitle>{{experience.fromYear}} - {{experience.present ? 'Present' : experience.toYear}}</mat-card-subtitle>
             <mat-card-subtitle>{{experience.workRole}}</mat-card-subtitle>
-            <button mat-icon-button *ngIf="itsMe">
+            <button mat-icon-button *ngIf="itsMe" (click)="removeExperience(experience)">
               <mat-icon>remove_circle</mat-icon>
             </button>
           </mat-card-header>
@@ -125,7 +125,7 @@
         <mat-list-item *ngFor="let language of cv.languages">
           <div mat-line><strong>{{language.name}}</strong></div>
           <div mat-line>{{language.level}}</div>
-          <button mat-icon-button *ngIf="itsMe">
+          <button mat-icon-button *ngIf="itsMe" (click)="removeLanguage(language)">
             <mat-icon>remove_circle</mat-icon>
           </button>
         </mat-list-item>
@@ -162,7 +162,7 @@
           <div mat-line><strong>{{education.name}}</strong></div>
           <div mat-line>{{education.fromYear}} - {{education.toYear}}</div>
           <div mat-line>{{education.level}}</div>
-          <button mat-icon-button *ngIf="itsMe">
+          <button mat-icon-button *ngIf="itsMe" (click)="removeEducation(education)">
             <mat-icon>remove_circle</mat-icon>
           </button>
         </mat-list-item>

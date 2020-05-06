@@ -56,3 +56,6 @@ hs_err_pid*
 
 
 portfolio-ui/node_modules
+portfolio-ui/dist
+portfolio/.git
+portfolio/.gitignore

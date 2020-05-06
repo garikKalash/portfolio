@@ -1,0 +1,91 @@
+<div *ngIf="itsMe">
+  <div style="height: 77.14px">
+    <div style="float: left; width: 60%">
+      <mat-form-field style="width: 100%" appearance="outline">
+        <input matInput placeholder="Name" [(ngModel)]="newProject.name">
+      </mat-form-field>
+    </div>
+    <div style="float: right; width: 30%; text-align: right">
+      <mat-form-field appearance="outline">
+        <mat-select [(value)]="newProject.projectType">
+          <mat-option *ngFor="let type of types" [value]="type">
+            {{type}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+  <div style="height: 428px">
+    <div style="float: left; width: 40%">
+      <h2>Description</h2>
+      <hr/>
+      <p-editor [(ngModel)]="newProject.description" [style]="{'height':'320px'}">
+        <p-header>
+          <span class="ql-formats">
+              <button class="ql-bold" aria-label="Bold"></button>
+              <button class="ql-italic" aria-label="Italic"></button>
+              <button class="ql-underline" aria-label="Underline"></button>
+          </span>
+          <span class="ql-formats">
+              <button class="ql-list" value="ordered"></button>
+              <button class="ql-list" value="bullet"></button>
+              <select title="Text Alignment" class="ql-align" >
+                <option selected>Gauche</option>
+                <option value="center" label="Center"></option>
+                <option value="right" label="Right"></option>
+                <option value="justify" label="Justify"></option>
+              </select>
+          </span>
+          <span class="ql-formats">
+              <button aria-label="Link" class="ql-link"></button>
+          </span>
+        </p-header>
+      </p-editor>
+    </div>
+    <div style="float: right; width: 40%;">
+      <h2>Technical Description</h2>
+      <hr/>
+      <p-editor [(ngModel)]="newProject.techDescription" [style]="{'height':'320px'}">
+        <p-header>
+          <span class="ql-formats">
+              <button class="ql-bold" aria-label="Bold"></button>
+              <button class="ql-italic" aria-label="Italic"></button>
+              <button class="ql-underline" aria-label="Underline"></button>
+          </span>
+          <span class="ql-formats">
+              <button class="ql-list" value="ordered"></button>
+              <button class="ql-list" value="bullet"></button>
+              <select title="Text Alignment" class="ql-align" >
+                <option selected>Gauche</option>
+                <option value="center" label="Center"></option>
+                <option value="right" label="Right"></option>
+                <option value="justify" label="Justify"></option>
+              </select>
+          </span>
+          <span class="ql-formats">
+              <button aria-label="Link" class="ql-link"></button>
+          </span>
+        </p-header>
+      </p-editor>
+    </div>
+  </div>
+  <div style="width: 100%">
+    <button mat-button (click)="save()">Save</button>
+  </div>
+</div>
+
+<div *ngIf="projects.length > 0" style="margin-top: 10%">
+  <div *ngFor="let project of projects">
+    <div class="project-section-header">
+      <div style="float: left">
+        <h1>{{project.name}}</h1>
+      </div>
+      <div style="float: right">
+        <button mat-stroked-button (click)="remove(project)" *ngIf="itsMe">Remove</button>
+      </div>
+    </div>
+    <hr/>
+    <div [innerHTML]="project.description"></div>
+    <div *ngIf="project.techDescription" [innerHTML]="project.techDescription"></div>
+
+  </div>
+</div>

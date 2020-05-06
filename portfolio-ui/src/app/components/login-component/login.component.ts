@@ -68,9 +68,9 @@ export class LoginComponent implements OnInit {
         },
         error => {
           if (error.status === 401) {
-            this.error = 'Wrong role or password.';
+            this.openSnackBar('Wrong role or password', '');
           } else {
-            this.error = 'Something went wrong please contact to Garik!';
+            this.openSnackBar('Something went wrong please contact to Garik!', '');
           }
           this.loading = false;
         });

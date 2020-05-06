@@ -1,5 +1,40 @@
-<mat-tab-group mat-stretch-tabs>
-  <mat-tab label="Minio-S3 file service"><app-s3-minio></app-s3-minio></mat-tab>
-  <mat-tab label="Currency"> <app-currency></app-currency> </mat-tab>
-  <mat-tab label="Calculator"> <app-calculator></app-calculator> </mat-tab>
+<div class="tech-details-overlay" *ngIf="!itsHr && showOverlay" (click)="showOverlay = false;">
+  <p *ngIf="!techDetails">Loading...</p>
+  <div [innerHTML]="techDetails" *ngIf="techDetails">{{techDetails}}</div>
+</div>
+
+<mat-tab-group mat-stretch-tabs (selectedIndexChange)="showOverlay = false;">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      Minio-S3 file service
+    </ng-template>
+    <div style="width: 100%; text-align: right">
+      <button mat-stroked-button *ngIf="!itsHr" (click)="showOverlay = true; loadTechDetails('s3_minio')">Tech Details</button>
+    </div>
+    <div>
+      <app-s3-minio></app-s3-minio>
+    </div>
+  </mat-tab>
+  <mat-tab label="Currency">
+    <ng-template mat-tab-label>
+      Currency
+    </ng-template>
+    <div style="width: 100%; text-align: right">
+      <button mat-stroked-button *ngIf="!itsHr"  (click)="showOverlay = true; loadTechDetails('app_currency')">Tech Details</button>
+    </div>
+    <div>
+      <app-currency></app-currency>
+    </div>
+  </mat-tab>
+  <mat-tab label="Calculator">
+    <ng-template mat-tab-label>
+      Calculator
+    </ng-template>
+    <div style="width: 100%; text-align: right">
+        <button mat-stroked-button *ngIf="!itsHr" class="info-icon" (click)="showOverlay = true; loadTechDetails('app_calculator')">Tech Details</button>
+    </div>
+    <div>
+      <app-calculator></app-calculator>
+    </div>
+  </mat-tab>
 </mat-tab-group>

@@ -2,7 +2,11 @@ package com.gk.portfolio.services;
 
 import com.gk.portfolio.entities.User;
 import com.gk.portfolio.repositories.UserRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -15,6 +19,7 @@ import java.util.List;
 
 @Service
 public class UserService implements UserDetailsService {
+
     @Autowired UserRepository userRepository;
 
     @Override
@@ -64,6 +69,10 @@ public class UserService implements UserDetailsService {
         public boolean isEnabled() {
             return true;
         }
+
+        public User getUser(){
+            return this.user;
+        }
     }
 
     public class GrantedAuthorityImpl implements GrantedAuthority {
@@ -93,5 +102,10 @@ public class UserService implements UserDetailsService {
             default:
                 throw new UsernameNotFoundException(role);
         }
+    }
+
+    @Scheduled(fixedDelay = 5_1000L)
+    private void noSleepHeroku() {
+        userRepository.findAll();
     }
 }

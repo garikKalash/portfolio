@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {CalculatorService} from '../../services/calculator.service';
+import {UserService} from '../../services/user.service';
+import {ProjectService} from '../../services/project.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-calculator',
@@ -14,7 +17,8 @@ export class CalculatorComponent implements OnInit {
 
   evaluatorForm: FormGroup;
 
-  constructor(private calculatorService: CalculatorService) {}
+  constructor(private calculatorService: CalculatorService) {
+  }
 
   evaluateExpression() {
     this.calculatorService.getResult(this._expression).subscribe(value => {
