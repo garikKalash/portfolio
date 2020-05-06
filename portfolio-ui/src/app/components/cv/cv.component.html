@@ -1,0 +1,172 @@
+<div *ngIf="cv">
+  <div style="margin-top: 3%">
+    <div style="text-align: center">
+      <p style="font-weight: bold; font-size: xx-large">{{cv.name}} {{cv.surname}}</p>
+    </div>
+    <div style="height: 75px; margin-top: 2%">
+      <div style="float: left; margin-left: 25%">
+        <p><span style="font-weight: bold">Email: </span>{{cv.email}}</p>
+        <p><span style="font-weight: bold">Telephone: </span>{{cv.telephone}}</p>
+      </div>
+      <div style="float: right; margin-right: 25%">
+        <p><span style="font-weight: bold">Address: </span>{{cv.address}}</p>
+        <p><span style="font-weight: bold">Skype: </span>{{cv.skype}}</p>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 2%">
+    <div class="section-header">
+      <div style="float: left">
+        <h1>Skills</h1>
+      </div>
+      <div style="float: right">
+        <button mat-stroked-button (click)="showNewSkill = !showNewSkill" *ngIf="itsMe">Add</button>
+      </div>
+    </div>
+    <hr/>
+
+    <div *ngIf="itsMe && showNewSkill">
+
+        <mat-form-field class="one-input-form-width" appearance="outline">
+          <input matInput placeholder="Name" [(ngModel)]="newSkill.name">
+        </mat-form-field>
+        <mat-form-field class="one-input-form-width" appearance="outline">
+          <input matInput placeholder="Experience in years" [(ngModel)]="newSkill.experienceInYear">
+        </mat-form-field>
+        <button mat-button (click)="addSkill()" style="margin-left: 4%">Save</button>
+
+    </div>
+    <div style="height: 350px">
+      <div style="height: 350px; margin-left: 1%;float: left; width: 19%" *ngFor="let divi of [0,1,2,3,4]">
+        <mat-nav-list>
+          <mat-list-item *ngFor="let skill of cv.skills| slice:divi*4:divi*4 + 4; index as i">
+            <div mat-line><strong>{{skill.name}}</strong></div>
+            <div mat-line>{{skill.experienceInYear}} years</div>
+            <button mat-icon-button *ngIf="itsMe">
+              <mat-icon>remove_circle</mat-icon>
+            </button>
+          </mat-list-item>
+        </mat-nav-list>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 2%">
+    <div class="section-header">
+      <div style="float: left">
+      <h1>Experience</h1>
+      </div>
+      <div style="float: right">
+        <button mat-stroked-button (click)="showNewExperience = !showNewExperience" *ngIf="itsMe">Add</button>
+      </div>
+    </div>
+    <hr/>
+    <div *ngIf="itsMe && showNewExperience">
+
+        <mat-form-field class="full-width" appearance="outline">
+          <input matInput placeholder="Company" [(ngModel)]="newExperience.company">
+        </mat-form-field>
+        <mat-form-field class="one-input-form-width" appearance="outline">
+          <input matInput placeholder="From" [(ngModel)]="newExperience.fromYear">
+        </mat-form-field>
+        <mat-form-field class="one-input-form-width" appearance="outline">
+          <input matInput placeholder="To" [(ngModel)]="newExperience.toYear">
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <input matInput placeholder="Role" [(ngModel)]="newExperience.workRole">
+        </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+          <input matInput placeholder="Description" [(ngModel)]="newExperience.description">
+      </mat-form-field>
+      <button mat-button (click)="addExperience()">Save</button>
+    </div>
+    <div style="display: inline-block; width: 100%">
+      <div style="float: left; width: 30%; margin-top: 2%; margin-left: 3%" *ngFor="let experience of cv.experiences">
+        <mat-card class="example-card" >
+          <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{experience.company}}</mat-card-title>
+            <mat-card-subtitle>{{experience.fromYear}} - {{experience.toYear}}</mat-card-subtitle>
+            <mat-card-subtitle>{{experience.workRole}}</mat-card-subtitle>
+            <button mat-icon-button *ngIf="itsMe">
+              <mat-icon>remove_circle</mat-icon>
+            </button>
+          </mat-card-header>
+          <mat-card-content>
+            <p>
+              {{experience.description}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+
+      </div>
+    </div>
+  </div>
+  <div style="margin-top: 2%">
+    <div style="float: left; width: 49%">
+      <div class="section-header">
+        <div style="float: left">
+          <h1>Languages</h1>
+        </div>
+        <div style="float: right">
+          <button mat-stroked-button (click)="showNewLanguage = !showNewLanguage" *ngIf="itsMe">Add</button>
+        </div>
+      </div>
+      <hr/>
+      <div *ngIf="itsMe && showNewLanguage">
+        <mat-form-field class="one-input-form-width" appearance="outline">
+          <input matInput placeholder="Name" [(ngModel)]="newLanguage.name">
+        </mat-form-field>
+        <mat-form-field class="one-input-form-width" appearance="outline">
+          <input matInput placeholder="Level" [(ngModel)]="newLanguage.level">
+        </mat-form-field>
+        <button mat-button (click)="addLanguage()" style="margin-left: 4%">Save</button>
+      </div>
+      <mat-nav-list>
+        <mat-list-item *ngFor="let language of cv.languages">
+          <div mat-line><strong>{{language.name}}</strong></div>
+          <div mat-line>{{language.level}}</div>
+          <button mat-icon-button *ngIf="itsMe">
+            <mat-icon>remove_circle</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+    <div style="float: right; width: 49%">
+      <div class="section-header">
+        <div style="float: left">
+          <h2>Education</h2>
+        </div>
+        <div style="float: right">
+          <button *ngIf="itsMe" mat-stroked-button (click)="showNewEducation = !showNewEducation">Add</button>
+        </div>
+      </div>
+      <hr/>
+      <div *ngIf="itsMe && showNewEducation">
+
+        <mat-form-field class="full-width" appearance="outline">
+          <input matInput placeholder="Name" [(ngModel)]="newEducation.name">
+        </mat-form-field>
+        <mat-form-field class="one-input-form-width" appearance="outline">
+          <input matInput placeholder="From" [(ngModel)]="newEducation.fromYear">
+        </mat-form-field>
+        <mat-form-field class="one-input-form-width" appearance="outline">
+          <input matInput placeholder="To" [(ngModel)]="newEducation.toYear">
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="outline">
+          <input matInput placeholder="Level" [(ngModel)]="newEducation.level">
+        </mat-form-field>
+        <button mat-button (click)="addEducation()" style="margin-left: 4%">Save</button>
+      </div>
+      <mat-nav-list>
+        <mat-list-item *ngFor="let education of cv.educations">
+          <div mat-line><strong>{{education.name}}</strong></div>
+          <div mat-line>{{education.fromYear}} - {{education.toYear}}</div>
+          <div mat-line>{{education.level}}</div>
+          <button mat-icon-button *ngIf="itsMe">
+            <mat-icon>remove_circle</mat-icon>
+          </button>
+        </mat-list-item>
+      </mat-nav-list>
+    </div>
+  </div>
+</div>

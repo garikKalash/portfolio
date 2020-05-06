@@ -1,0 +1,33 @@
+<div class="login-background">
+  <mat-card>
+    <mat-card-title><img style="height: 20%; width: 20%; border-radius: 100%"
+                         src="https://img.favpng.com/8/17/19/african-elephant-elephantidae-lion-indian-elephant-png-favpng-Y1CYthjMHgux2xE1uJaFAACTp.jpg">
+    </mat-card-title>
+    <mat-card-content >
+      <form [formGroup]="loginForm">
+
+          <mat-form-field>
+            <input type="text" formControlName="username" matInput placeholder="Role">
+            <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+              <div *ngIf="f.username.errors.required">Role is required</div>
+            </div>
+          </mat-form-field>
+        <mat-form-field>
+            <input type="password" formControlName="password"  matInput placeholder="Password">
+            <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+            </div>
+          </mat-form-field>
+
+
+        <div class="button">
+          <button style="width: 100%; height: 100%;" [disabled]="loading" type="submit" mat-button (click)="login()">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Visit
+          </button>
+        </div>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,19 @@
+<div style="margin-top: 10%; height: 75px">
+  <div *ngIf="currentFileUpload" class="progress" style="float: left; width: 100%">
+    <div class="progress-bar progress-bar-info progress-bar-striped" role="progressbar"
+         attr.aria-valuenow="{{progress.percentage}}"
+         aria-valuemin="0" aria-valuemax="100" [ngStyle]="{width:progress.percentage+'%'}">
+      {{progress.percentage}}%
+    </div>
+  </div>
+
+  <div style="float: left">
+    <label class="btn btn-default">
+      <input #fileInput type="file" (change)="selectFile($event)">
+    </label>
+  </div>
+
+  <div style="float: right">
+    <button class="btn btn-success" [disabled]="!selectedFiles" (click)="upload()">Upload</button>
+  </div>
+</div>

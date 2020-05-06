@@ -1,0 +1,22 @@
+.full-width{
+  width: 100%;
+}
+
+.one-input-form-width{
+  width: 43%;
+  margin-left: 2%;
+}
+
+
+.section-header{
+  height: 20px;
+}
+
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://www.synisys.com/wp-content/uploads/2016/01/Synergy_logo1.svg');
+  background-size: cover;
+}

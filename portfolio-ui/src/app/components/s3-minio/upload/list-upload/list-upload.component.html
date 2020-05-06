@@ -1,0 +1,20 @@
+<div style="width: 100%; text-align: center">
+  <button mat-stroked-button  (click)='showFiles(true)'>Refresh</button>
+</div>
+
+<div [hidden]="!showFile">
+  <div class="panel panel-primary">
+    <mat-nav-list>
+      <mat-list-item *ngFor="let file of fileUploads | async" >
+        <div mat-line><strong>{{file}}</strong></div>
+        <button mat-icon-button (click)="remove(file)">
+          <mat-icon>remove_circle</mat-icon>
+        </button>
+        <button mat-icon-button (click)="download(file)">
+          <mat-icon>cloud_download</mat-icon>
+        </button>
+      </mat-list-item>
+    </mat-nav-list>
+    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+  </div>
+</div>

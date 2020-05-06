@@ -1,0 +1,17 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="user">
+  <div style="color: white; font-weight: bold; float: left">{{user.role}}</div>
+  <div class="navbar-nav" style="margin-left: 34%;">
+    <a class="nav-item nav-link" routerLink="/cv">CV</a>
+    <a class="nav-item nav-link" routerLink="/demos">Test demos</a>
+    <a class="nav-item nav-link" routerLink="/demos">Done projects</a>
+    <a class="nav-item nav-link" routerLink="/">Links</a>
+  </div>
+  <div class="navbar-nav" style="margin-left: 39%">
+    <a class="nav-item nav-link" (click)="logout()">Logout</a>
+  </div>
+</nav>
+
+<!-- main app container -->
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,39 @@
+<form [formGroup]="evaluatorForm">
+  <div style="margin-top: 10%; margin-left: 30%; margin-right: 30%">
+    <h1 style="margin-left: 20%">Evaluator Demo</h1>
+    <mat-form-field style="width: 100%">
+      <input id="expression" matInput placeholder="Expression" [(ngModel)]="_expression"
+             required minlength="3" formControlName="expression">
+    </mat-form-field>
+    <div *ngIf="expression.invalid && (expression.dirty || expression.touched)"
+         class="alert alert-danger">
+
+      <div *ngIf="expression.errors.required" style="color: red">
+        Expression is required.
+      </div>
+      <div *ngIf="expression.errors.minlength" style="color: red">
+        Expression must be at least 3 characters.
+      </div>
+    </div>
+    <br/>
+    <button mat-button color="blue" (click)="evaluateExpression()"
+            [disabled]="expression.errors !== null">Evaluate</button>
+
+    <div style="background-color: lightgreen; border-radius: 5%" *ngIf="result">
+      <p>Result is: <span style="font-weight: bold">{{result}}</span></p>
+    </div>
+
+    <div *ngIf="errorMessage" style="background-color: pink;  border-radius: 5%">
+      <p>{{errorMessage}}</p>
+    </div>
+  </div>
+  <div>
+    <h3>Rules of evaluator.</h3>
+    <ul>
+      <li>Provides evaluation just for plus and multiplication operators</li>
+      <li>Use just positive integers (number without points)</li>
+      <li>Service doesn't evaluate expressions which include brackets</li>
+      <li>Service ignores spaces in your expression.</li>
+    </ul>
+  </div>
+</form>
