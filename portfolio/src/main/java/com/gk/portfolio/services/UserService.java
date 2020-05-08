@@ -104,7 +104,7 @@ public class UserService implements UserDetailsService {
         }
     }
 
-    @Scheduled(fixedDelay = 5_1000L)
+    @Scheduled(fixedDelay = 5 * 1000L)
     private void noSleepHeroku() {
         userRepository.findAll();
     }

