@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {ProjectService} from '../../services/project.service';
 import {Router} from '@angular/router';
@@ -21,7 +21,8 @@ export class DoneProjectsComponent implements OnInit {
   constructor(private userService: UserService,
               private router: Router,
               private projectService: ProjectService,
-              private snackBar: MatSnackBar) { }
+              private snackBar: MatSnackBar) {
+  }
 
   ngOnInit(): void {
     if (!this.userService.userValue) {
@@ -46,22 +47,22 @@ export class DoneProjectsComponent implements OnInit {
     this.projectService.save(this.newProject).subscribe(value => {
         this.projects.push(value);
         this.newProject = new Project();
-    },
+      },
       error => {
-      this.openSnackBar('Error in during of saving project.', '');
+        this.openSnackBar('Error in during of saving project.', '');
       });
   }
 
   remove(project) {
     this.projectService.remove(project.id).subscribe(value => {
-          const index = this.projects.indexOf(project, 0);
-          if (index > -1) {
-            this.projects.splice(index, 1);
-          }
-        },
-        error => {
-          this.openSnackBar(`Error in during of removing project ${project.name}`, '');
-        });
+        const index = this.projects.indexOf(project, 0);
+        if (index > -1) {
+          this.projects.splice(index, 1);
+        }
+      },
+      error => {
+        this.openSnackBar(`Error in during of removing project ${project.name}`, '');
+      });
   }
 
 }

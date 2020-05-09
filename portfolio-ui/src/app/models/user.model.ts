@@ -1,4 +1,4 @@
 export class User {
-   role: string;
-   btoa: string;
+  role: string;
+  btoa: string;
 }

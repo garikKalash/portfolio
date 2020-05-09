@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {FileService} from '../../services/file.service';
 import {MatIconRegistry} from '@angular/material/icon';
@@ -35,10 +35,10 @@ export class S3MinioComponent implements OnInit {
         if (index > -1) {
           this.files.splice(index, 1);
         }
-    },
-    error1 => {
-      this.error = error1.message;
-    });
+      },
+      error1 => {
+        this.error = error1.message;
+      });
   }
 
   openSnackBar(message, action) {
@@ -46,7 +46,6 @@ export class S3MinioComponent implements OnInit {
       duration: 3 * 1000,
     });
   }
-
 
 
 }

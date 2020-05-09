@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {FileService} from '../../../../services/file.service';
 
 @Component({
@@ -10,7 +10,8 @@ export class DetailsUploadComponent implements OnInit {
 
   @Input() fileUpload: string;
 
-  constructor(private fileService: FileService) { }
+  constructor(private fileService: FileService) {
+  }
 
   ngOnInit() {
   }

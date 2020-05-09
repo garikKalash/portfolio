@@ -26,7 +26,7 @@ export class CalculatorComponent implements OnInit {
         this.errorMessage = '';
       },
       error => {
-        if ( error.status === 404) {
+        if (error.status === 404) {
           this.errorMessage = 'The passed expression is incorrect, please read the rules of evaluator';
         } else {
           this.errorMessage = error.error;
@@ -36,7 +36,7 @@ export class CalculatorComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.evaluatorForm =  new FormGroup({
+    this.evaluatorForm = new FormGroup({
       expression: new FormControl(this._expression, [Validators.required,
         Validators.minLength(3)])
     });

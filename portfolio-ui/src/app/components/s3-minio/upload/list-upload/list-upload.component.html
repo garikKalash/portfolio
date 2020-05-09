@@ -1,11 +1,11 @@
 <div style="width: 100%; text-align: center">
-  <button mat-stroked-button  (click)='showFiles(true)'>Refresh</button>
+  <button mat-stroked-button (click)='showFiles(true)'>Refresh</button>
 </div>
 
 <div [hidden]="!showFile">
   <div class="panel panel-primary">
     <mat-nav-list>
-      <mat-list-item *ngFor="let file of fileUploads | async" >
+      <mat-list-item *ngFor="let file of fileUploads | async">
         <div mat-line><strong>{{file}}</strong></div>
         <button mat-icon-button (click)="remove(file)">
           <mat-icon>remove_circle</mat-icon>

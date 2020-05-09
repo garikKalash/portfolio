@@ -10,24 +10,27 @@
         <mat-select [(value)]="fromCur" (selectionChange)="calculate($event)">
           <mat-option *ngFor="let currency of currencies" [value]="currency.value">
             <img with="15" height="15" src="{{currency.flag}}">
-            {{currency.value}}</mat-option>
+            {{currency.value}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
   </div>
-  <div style="float: left;  width: 18%; text-align: center; border: 1px solid lightgray; border-radius: 8%;" (click)="calculate($event)">
+  <div style="float: left;  width: 18%; text-align: center; border: 1px solid lightgray; border-radius: 8%;"
+       (click)="calculate($event)">
 
     <button mat-icon-button [class.spinner]="showSpinner" [disabled]="showSpinner">
       <mat-icon>cached</mat-icon>
     </button>
   </div>
-  <div style="float: left; width: 41%" >
+  <div style="float: left; width: 41%">
     <div style="float: right; margin-left: 5%; width: 34%">
       <mat-form-field style="width: 100%;" appearance="outline">
         <mat-select [(value)]="toCur" (selectionChange)="calculate($event)">
           <mat-option *ngFor="let currency of currencies" [value]="currency.value">
             <img with="15" height="15" src="{{currency.flag}}">
-            {{currency.value}}</mat-option>
+            {{currency.value}}
+          </mat-option>
         </mat-select>
       </mat-form-field>
     </div>
@@ -38,7 +41,8 @@
     </div>
   </div>
   <div style="text-align: center; margin-top: 18%; float: left; width: 100%">
-    <p style="color: gray; float: left; margin-left: 29%">Is integrated with </p><a style="float: left; margin-left: 1%" href="http://data.fixer.io">http://data.fixer.io</a>
+    <p style="color: gray; float: left; margin-left: 29%">Is integrated with </p><a style="float: left; margin-left: 1%"
+                                                                                    href="http://data.fixer.io">http://data.fixer.io</a>
   </div>
 </div>
 

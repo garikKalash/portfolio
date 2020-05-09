@@ -9,7 +9,8 @@
       Minio-S3 file service
     </ng-template>
     <div style="width: 100%; text-align: right">
-      <button mat-stroked-button *ngIf="!itsHr" (click)="showOverlay = true; loadTechDetails('s3_minio')">Tech Details</button>
+      <button mat-stroked-button *ngIf="!itsHr" (click)="showOverlay = true; loadTechDetails('s3_minio')">Tech Details
+      </button>
     </div>
     <div>
       <app-s3-minio></app-s3-minio>
@@ -20,7 +21,9 @@
       Currency
     </ng-template>
     <div style="width: 100%; text-align: right">
-      <button mat-stroked-button *ngIf="!itsHr"  (click)="showOverlay = true; loadTechDetails('app_currency')">Tech Details</button>
+      <button mat-stroked-button *ngIf="!itsHr" (click)="showOverlay = true; loadTechDetails('app_currency')">Tech
+        Details
+      </button>
     </div>
     <div>
       <app-currency></app-currency>
@@ -31,7 +34,9 @@
       Calculator
     </ng-template>
     <div style="width: 100%; text-align: right">
-        <button mat-stroked-button *ngIf="!itsHr" class="info-icon" (click)="showOverlay = true; loadTechDetails('app_calculator')">Tech Details</button>
+      <button mat-stroked-button *ngIf="!itsHr" class="info-icon"
+              (click)="showOverlay = true; loadTechDetails('app_calculator')">Tech Details
+      </button>
     </div>
     <div>
       <app-calculator></app-calculator>

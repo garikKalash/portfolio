@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CvService} from '../../services/cv.service';
 import {CV} from '../../models/cv.model';
 import {Skill} from '../../models/skill.model';
@@ -66,16 +66,16 @@ export class CvComponent implements OnInit {
   }
 
   removeSkill(skill) {
-      this.cvService.removeSkill(skill.id).subscribe(value => {
+    this.cvService.removeSkill(skill.id).subscribe(value => {
         const index = this.cv.skills.indexOf(skill, 0);
         if (index > -1) {
           this.cv.skills.splice(index, 1);
         }
       },
-        error => {
-          this.openSnackBar(`Error in during of removing skill ${skill.name}`, '');
-        }
-        );
+      error => {
+        this.openSnackBar(`Error in during of removing skill ${skill.name}`, '');
+      }
+    );
   }
 
   addEducation() {

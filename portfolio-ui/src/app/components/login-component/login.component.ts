@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
 import {first} from 'rxjs/operators';
 import {MatSnackBar} from '@angular/material/snack-bar';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -50,16 +51,11 @@ export class LoginComponent implements OnInit {
     return this.loginForm.controls;
   }
 
-  login() {
+  login(role, password) {
     this.submitted = true;
 
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-      return;
-    }
-
     this.loading = true;
-    this.userService.login(this.f.username.value, this.f.password.value)
+    this.userService.login(role, password)
       .pipe(first())
       .subscribe(
         data => {

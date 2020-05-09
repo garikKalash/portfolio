@@ -54,9 +54,9 @@ export class ListUploadComponent implements OnInit {
   remove(name) {
     this.error = null;
     this.fileService.remove(name).subscribe(value => {
-          this.showFiles(true);
+        this.showFiles(true);
       },
-        error => {
+      error => {
         this.error = 'Error during of remove this file.';
       });
   }

@@ -17,7 +17,8 @@
     </div>
     <br/>
     <button mat-button color="blue" (click)="evaluateExpression()"
-            [disabled]="expression.errors !== null">Evaluate</button>
+            [disabled]="expression.errors !== null">Evaluate
+    </button>
 
     <div style="background-color: lightgreen; border-radius: 5%" *ngIf="result">
       <p>Result is: <span style="font-weight: bold">{{result}}</span></p>

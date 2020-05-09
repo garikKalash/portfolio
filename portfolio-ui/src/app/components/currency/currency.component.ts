@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {Router} from '@angular/router';
 import {CurrencyService} from '../../services/currency.service';
@@ -40,7 +40,7 @@ export class CurrencyComponent implements OnInit {
 
   }
 
-  calculate(event){
+  calculate(event) {
     this.showSpinner = true;
     this.currencyService.getRate(this.fromCur, this.toCur).subscribe(value => {
       this.rates = value;

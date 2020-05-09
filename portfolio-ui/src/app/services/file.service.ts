@@ -28,10 +28,13 @@ export class FileService {
   }
 
   download(name) {
-      const headers = new HttpHeaders({
-        Authorization: 'Basic ' + this.userService.userValue.btoa
-      });
-      return this.httpClient.get<any>(`${environment.apiUrl}/api/v1/files/${name}`, { headers, responseType: 'blob' as 'json' });
+    const headers = new HttpHeaders({
+      Authorization: 'Basic ' + this.userService.userValue.btoa
+    });
+    return this.httpClient.get<any>(`${environment.apiUrl}/api/v1/files/${name}`, {
+      headers,
+      responseType: 'blob' as 'json'
+    });
 
   }
 

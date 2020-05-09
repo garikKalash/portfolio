@@ -8,7 +8,8 @@ import {UserService} from './user.service';
 @Injectable()
 export class ProjectService {
   constructor(private httpClient: HttpClient,
-              private userService: UserService) {}
+              private userService: UserService) {
+  }
 
   projects(): Observable<Project[]> {
     const httpOptions = {
@@ -42,7 +43,10 @@ export class ProjectService {
     const headers = new HttpHeaders({
       Authorization: 'Basic ' + this.userService.userValue.btoa
     });
-    return this.httpClient.get<string>(`${environment.apiUrl}/api/v1/project/tech/${name}`, { headers, responseType: 'string' as 'json' });
+    return this.httpClient.get<string>(`${environment.apiUrl}/api/v1/project/tech/${name}`, {
+      headers,
+      responseType: 'string' as 'json'
+    });
 
   }
 

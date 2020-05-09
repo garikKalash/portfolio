@@ -1,5 +1,5 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import { HttpResponse, HttpEventType } from '@angular/common/http';
+import {HttpResponse, HttpEventType} from '@angular/common/http';
 import {FileService} from '../../../../services/file.service';
 
 @Component({
@@ -11,12 +11,13 @@ export class FormUploadComponent implements OnInit {
 
   selectedFiles: FileList;
   currentFileUpload: File;
-  progress: { percentage: number } = { percentage: 0 };
+  progress: { percentage: number } = {percentage: 0};
 
   @ViewChild('fileInput')
   myInputVariable: ElementRef;
 
-  constructor(private fileService: FileService) { }
+  constructor(private fileService: FileService) {
+  }
 
   ngOnInit() {
   }

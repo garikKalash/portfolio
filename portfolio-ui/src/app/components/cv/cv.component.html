@@ -27,13 +27,13 @@
 
     <div *ngIf="itsMe && showNewSkill">
 
-        <mat-form-field class="one-input-form-width" appearance="outline">
-          <input matInput placeholder="Name" [(ngModel)]="newSkill.name">
-        </mat-form-field>
-        <mat-form-field class="one-input-form-width" appearance="outline">
-          <input matInput placeholder="Experience in years" [(ngModel)]="newSkill.experienceInYear">
-        </mat-form-field>
-        <button mat-button (click)="addSkill()" style="margin-left: 4%">Save</button>
+      <mat-form-field class="one-input-form-width" appearance="outline">
+        <input matInput placeholder="Name" [(ngModel)]="newSkill.name">
+      </mat-form-field>
+      <mat-form-field class="one-input-form-width" appearance="outline">
+        <input matInput placeholder="Experience in years" [(ngModel)]="newSkill.experienceInYear">
+      </mat-form-field>
+      <button mat-button (click)="addSkill()" style="margin-left: 4%">Save</button>
 
     </div>
     <div style="height: 350px">
@@ -53,7 +53,7 @@
   <div style="margin-top: 2%">
     <div class="section-header">
       <div style="float: left">
-      <h1>Experience</h1>
+        <h1>Experience</h1>
       </div>
       <div style="float: right">
         <button mat-stroked-button (click)="showNewExperience = !showNewExperience" *ngIf="itsMe">Add</button>
@@ -62,30 +62,31 @@
     <hr/>
     <div *ngIf="itsMe && showNewExperience">
 
-        <mat-form-field class="full-width" appearance="outline">
-          <input matInput placeholder="Company" [(ngModel)]="newExperience.company">
-        </mat-form-field>
-        <mat-form-field class="one-input-form-width" appearance="outline">
-          <input matInput placeholder="From" [(ngModel)]="newExperience.fromYear">
-        </mat-form-field>
-        <mat-form-field class="one-input-form-width" appearance="outline">
-          <input matInput placeholder="To" [(ngModel)]="newExperience.toYear">
-        </mat-form-field>
-        <mat-form-field class="full-width" appearance="outline">
-          <input matInput placeholder="Role" [(ngModel)]="newExperience.workRole">
-        </mat-form-field>
       <mat-form-field class="full-width" appearance="outline">
-          <input matInput placeholder="Description" [(ngModel)]="newExperience.description">
+        <input matInput placeholder="Company" [(ngModel)]="newExperience.company">
+      </mat-form-field>
+      <mat-form-field class="one-input-form-width" appearance="outline">
+        <input matInput placeholder="From" [(ngModel)]="newExperience.fromYear">
+      </mat-form-field>
+      <mat-form-field class="one-input-form-width" appearance="outline">
+        <input matInput placeholder="To" [(ngModel)]="newExperience.toYear">
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <input matInput placeholder="Role" [(ngModel)]="newExperience.workRole">
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="outline">
+        <input matInput placeholder="Description" [(ngModel)]="newExperience.description">
       </mat-form-field>
       <button mat-button (click)="addExperience()">Save</button>
     </div>
     <div style="display: inline-block; width: 100%">
       <div style="float: left; width: 30%; margin-top: 2%; margin-left: 3%" *ngFor="let experience of cv.experiences">
-        <mat-card class="example-card" >
+        <mat-card class="example-card">
           <mat-card-header>
             <div mat-card-avatar class="example-header-image"></div>
             <mat-card-title>{{experience.company}}</mat-card-title>
-            <mat-card-subtitle>{{experience.fromYear}} - {{experience.present ? 'Present' : experience.toYear}}</mat-card-subtitle>
+            <mat-card-subtitle>{{experience.fromYear}} - {{experience.present ? 'Present' : experience.toYear}}
+            </mat-card-subtitle>
             <mat-card-subtitle>{{experience.workRole}}</mat-card-subtitle>
             <button mat-icon-button *ngIf="itsMe" (click)="removeExperience(experience)">
               <mat-icon>remove_circle</mat-icon>

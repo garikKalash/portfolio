@@ -11,7 +11,8 @@ import {Language} from "../models/language.model";
 
 @Injectable()
 export class CvService {
-  constructor(private httpClient: HttpClient, private userService: UserService) {}
+  constructor(private httpClient: HttpClient, private userService: UserService) {
+  }
 
   getCv(): Observable<CV> {
     const httpOptions = {
