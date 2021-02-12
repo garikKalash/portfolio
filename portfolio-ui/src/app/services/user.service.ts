@@ -27,7 +27,7 @@ export class UserService {
   login(role: string, password: string) {
     const httpOptions = {
       headers: new HttpHeaders({
-        Authorization: 'Basic ' + btoa(`${role}:${password}`)
+        Authorization: 'Basic ' + btoa(`${role}:${password}`), 'Access-Control-Allow-Origin':'*'
       })
     };
     return this.httpClient.get<any>(`${environment.apiUrl}/api/v1/auth/login`, httpOptions)
